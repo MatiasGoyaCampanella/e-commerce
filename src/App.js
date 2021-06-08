@@ -1,6 +1,5 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import image from '../assets/carrito.png'
 import ItemListContainer from './components/ItemListContainer';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 

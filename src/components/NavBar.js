@@ -1,11 +1,13 @@
 
 import React from 'react';
-import image from 'src/assets/carrito.png';
-import { Navbar,Nav,NavDropdown,Button,Form,FormControl, Image } from 'react-bootstrap';
+import CartWidget from './CartWidget';
+import { Navbar,Nav,NavDropdown,Button,Form,FormControl } from 'react-bootstrap';
 export default function NavBar() {
     return (
   <Navbar bg="light" expand="lg">
-  <Navbar.Brand href="#" img ={image}>Carrito</Navbar.Brand>
+  <Navbar.Brand href="#">
+  <CartWidget/>
+    carrito</Navbar.Brand>
   <Navbar.Toggle aria-controls="navbarScroll" />
   <Navbar.Collapse id="navbarScroll">
     <Nav
@@ -35,6 +37,7 @@ export default function NavBar() {
       <Button variant="outline-success">Search</Button>
     </Form>
   </Navbar.Collapse>
+ 
 </Navbar>
     )
 }
