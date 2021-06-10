@@ -4,7 +4,9 @@ const Contador = () => {
     const [clicks , setClicks] = React.useState(0);
     function aumentarContador () {
         setClicks(clicks + 1);
-        const stock = 10
+       // const stock = 10
+        //{(clicks >= stock) ? <p>Superaste el stock</p>}
+
         /*if(clicks(10)) {
             
             <p>{`Superaste el limete 10 de stock`}</p>
