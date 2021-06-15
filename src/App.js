@@ -5,7 +5,7 @@ import ItemCount from './components/ItemCount.js';
 import Item from './components/Item.js';
 import ItemList from './components/ItemList.js';
 import MyButton from './components/MyButton.js';
-
+import Map from './components/Map.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
     <ItemCount/>
     <MyButton/>
     <ItemListContainer greeting = "Productos"/>
+    <Map/>
      </div>);
 }
 
