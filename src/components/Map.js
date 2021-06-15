@@ -10,7 +10,7 @@ function Map() {
         {
             title: "Cremas",
             body: "marca",
-            id: 1,
+            id: 2,
         },
 
     ];
