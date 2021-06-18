@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React, {useEffect, useState} from "react";
+importCard form "./Card";
 class AppClass extends React.Component {
     constructor(props) {
         super(props);
@@ -30,7 +30,9 @@ class AppClass extends React.Component {
                 return (
                     <>
                     <Card name={pokemon.name} url={pokemon.url} />
-                    <button onClick={() => this.setState({pokemons: this.state.pokemons.slice(0,index)})}>
+                    <button onClick={() => this.setState({pokemons: this.state.pokemons.filter(
+                        (poke) => poke.name !== pokemon.name
+                    ))})}>
                         x
                     </button>
                     </>
