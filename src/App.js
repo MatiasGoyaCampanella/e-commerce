@@ -1,4 +1,6 @@
 import './App.css';
+import React from 'react';
+import AppRouter from './router/AppRouter';
 import NavBar from './components/NavBar.js';
 import ItemListContainer from './components/ItemListContainer.js';
 import ItemCount from './components/ItemCount.js';
@@ -10,14 +12,9 @@ import Map from './components/Map.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-    return ( <div className = "App" >  
-    <NavBar/>
-    <ItemCount/>
-    <MyButton/>
-    <ItemListContainer greeting = "Productos"/>
-    <Map/>
-    <Api/>
-    </div>);
+    return ( 
+        <AppRouter/>
+        );
 }
 
 export default App;
