@@ -1,7 +1,20 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
+import ItemDetail from './ItemDetail'
 
-const getItems = () => { /* Esta función debe retornar la promesa que resuelva con delay */ }
 function ItemDetailContainer() {
-// Implementar mock invocando a getItems() y utilizando el resolver then
- return /* JSX que devuelva un ItemDetail (desafío 6b) */
+    const [value, setValue] = useState(null)
+    useEffect(()=> {
+        fetch('https://api.mercadolibre.com/items/$MLA600190449')
+        .then((res)=>res.json())
+        .then((res)=>{setValue(res.results)})
+    }),[])
+
+    return(
+        <div>
+            {value !== null ? (value.map((val, index)=>{
+                return <ItemDetail key={index} image={val.image} description={val.species} nombre={val.name}>
+            }))}: <h1>Cargando página</h1>
+        </div>
+    )
 }
+export default ItemDetailContainer
