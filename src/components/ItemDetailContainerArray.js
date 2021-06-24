@@ -1,5 +1,6 @@
+import React from 'react'
 
-
+function(ItemDetailCointainerArray) {
 miPromesa.then(function(valor){
     setData(Database)
 }).catch((function(error){
@@ -25,7 +26,7 @@ return(
             )}
         </div>
     </div>
-)
+)}
 
 
 export default ItemDetailContainerArray

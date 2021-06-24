@@ -9,7 +9,7 @@ function ItemList(props) {
     const [data, setData] = useState(null);
     useEffect(() => {
         const timeOut = setTimeout(() => {
-           // fetch(`https://api.mercadolibre.com/sites`)
+                 fetch(`https://api.mercadolibre.com/sites`)
                  .then((res) => res.json())
                  .then((res) => {
                      setData(res.results);
