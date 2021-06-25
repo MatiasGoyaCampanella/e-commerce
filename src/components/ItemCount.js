@@ -1,24 +1,29 @@
-import React from "react"
+import React from 'react';
+import { Button } from 'react-bootstrap';
 
-const Contador = () => {
-    const [clicks , setClicks] = React.useState(0);
-    function aumentarContador () {
-        setClicks(clicks + 1);
-       // const stock = 10
-        //{(clicks >= stock) ? <p>Superaste el stock</p>}
+function Counter(props) {
+  return (
+    <div className="d-flex justify-content-center m-4">
+      <Button
+        style={{ width: '2rem' }}
+        variant="danger"
+        onClick={props.subItem}
+      >
+        -
+      </Button>
+      <div className="m-3" style={{ width: '2rem' }}>
+        {props.counter}
+      </div>
 
-        /*if(clicks(10)) {
-            
-            <p>{`Superaste el limete 10 de stock`}</p>
-        }*/
-    };
-    return (
-        <div> 
-          <button onClick = {aumentarContador}>Contador</button> 
-          <p>{`Clickeaste ${clicks} veces`}</p>
-          <small>{new Date().toLocaleString()}</small>
-        </div>
-    )
-
+      <Button
+        style={{ width: '2rem' }}
+        variant="success"
+        onClick={props.addItem}
+      >
+        +
+      </Button>
+    </div>
+  );
 }
-export default Contador
+
+export default Counter;
