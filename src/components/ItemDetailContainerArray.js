@@ -1,12 +1,12 @@
 import React from 'react'
 
-function(ItemDetailCointainerArray) {
-miPromesa.then(function(valor){
-    setData(Database)
-}).catch((function(error){
+function ItemDetailCointainerArray() {
+    miPromesa.then(function(valor){
+        setData(Database);
+    }).catch((function(error){
     console.log(error);
-});
-}. []);
+    }));
+} [];
 
 return(
     <div>
@@ -26,7 +26,7 @@ return(
             )}
         </div>
     </div>
-)}
+)
 
 
 export default ItemDetailContainerArray

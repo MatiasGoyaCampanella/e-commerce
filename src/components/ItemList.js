@@ -3,11 +3,11 @@ import React from 'react'
 function ItemList() {
     const items =[{
         title:"perfume1",
-        precio:30
+        precio:30,
         id:2,
         },{
             title:"perfume2",
-            precio:30
+            precio:30,
             id:2,
         }
     ]

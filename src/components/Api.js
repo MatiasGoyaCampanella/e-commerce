@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card form "./Card";
+import Card from "./Card";
 
 class AppClass extends React.Component {
     constructor(props) {
