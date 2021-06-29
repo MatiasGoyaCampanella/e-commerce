@@ -12,7 +12,7 @@ function ItemDetailContainer() {
     return(
         <div>
             {value !== null ? (value.map((val, index)=>{
-                return <ItemDetail key={index} image={val.image} description={val.species} nombre={val.name}>
+                return <ItemDetail key={index} image={val.image} description={val.species} nombre={val.name}/>
             })): 
             
             <h1>Cargando página</h1>}

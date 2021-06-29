@@ -11,7 +11,7 @@ function ItemList() {
             id:2,
         }
     ]
-}
+
 
 return (
     <div>
@@ -26,5 +26,6 @@ return (
         }
     </div>
 )
+}
 
 export default ItemList

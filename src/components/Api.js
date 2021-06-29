@@ -1,6 +1,7 @@
+/*
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
-
+/*
 class AppClass extends React.Component {
     constructor(props) {
         super(props);
@@ -67,4 +68,4 @@ export default function AppHooks() {
     <input value={name} onChange={handleChange} />
     </div>
     );
-}
+}*/

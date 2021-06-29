@@ -10,6 +10,7 @@ import MyButton from './components/MyButton.js';
 import Api from './components/Api.js';
 import Map from './components/Map.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { CartContext } from './components/CartContext';
 
 function App() {
     return ( 
