@@ -11,6 +11,10 @@ import Api from './components/Api.js';
 import Map from './components/Map.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { CartContext } from './components/CartContext';
+import Home from './pages/Home';
+import Galery from './pages/Galery';
+import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
 function App() {
     return ( 
