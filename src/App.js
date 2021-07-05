@@ -1,27 +1,52 @@
 import './App.css';
-import React from 'react';
-import AppRouter from './router/AppRouter';
-import NavBar from './components/NavBar.js';
-import ItemListContainer from './components/ItemListContainer.js';
-import ItemCount from './components/ItemCount.js';
-import Item from './components/Item.js';
-import ItemList from './components/ItemList.js';
-import MyButton from './components/MyButton.js';
-import Api from './components/Api.js';
-import Map from './components/Map.js';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { CartContext } from './components/CartContext';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './components/NavBar';
 import Home from './pages/Home';
-import Galery from './pages/Galery';
-import Contact from './pages/Contact';
+import About from './pages/About';
+import Cart from './pages/Cart';
+import Products from './pages/Products';
 import NotFound from './pages/NotFound';
+import Contact from './pages/Contact';
+import ItemDetail from './pages/ItemDetail.js';
+import { Container } from 'react-bootstrap';
+import { CartContext } from './components/CartContext';
+import { positions, Provider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
 
 function App() {
-    return ( 
-        <div>
-            <AppRouter/>
-        </div>
-        );
+  const options = {
+    timeout: 2000,
+    position: positions.TOP_RIGHT,
+  };
+  return (
+    <Router>
+      <Provider template={AlertTemplate} {...options}>
+        <CartContext>
+          <div className="App">
+            <NavBar />
+            <Container className="contenedor">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/cart">
+                  <Cart />
+                </Route>
+                <Route exact path="/types-products">
+                  <Products />
+                </Route>
+                <Route exact path="/product/:product_id">
+                  <ItemDetail />{' '}
+                </Route>
+                <Route exact path="/contact" component={Contact} />
+                <Route component={NotFound} />
+              </Switch>
+            </Container>
+          </div>
+        </CartContext>
+      </Provider>
+    </Router>
+  );
 }
 
 export default App;

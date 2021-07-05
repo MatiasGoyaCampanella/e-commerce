@@ -1,31 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+//import './ItemList.css';
+import { CardDeck, Spinner } from 'react-bootstrap';
+import CardItem from './CardItem.js';
+import { getFirestore } from '../firebase';
 
-function ItemList() {
-    const items =[{
-        title:"perfume1",
-        precio:30,
-        id:2,
-        },{
-            title:"perfume2",
-            precio:30,
-            id:2,
-        }
-    ]
+const ItemList = () => {
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    const db = getFirestore();
+    const itemCollection = db.collection('items');
+    itemCollection.get().then((querySnapshot) => {
+      if (querySnapshot.size === 0) {
+        console.log('no resultado');
+        setData([]);
+      } else {
+        setData(querySnapshot.docs.map((doc) => doc.data()));
+      }
+    });
+  }, []);
 
+  return (
+    <CardDeck className="d-flex justify-content-around">
+      {data ? (
+        data.map((item) => {
+          return (
+            <CardItem
+              key={item.id}
+              title={item.name}
+              text={item.description}
+              productId={item.id}
+              price={item.price}
+              stock={item.stock}
+              photo={item.photo_url}
+              thumb={item.thumb}
+              category={item.category}
+            />
+          );
+        })
+      ) : (
+        <Spinner animation="border" variant="warning" />
+      )}
+    </CardDeck>
+  );
+};
 
-return (
-    <div>
-        {
-            items.map((post, index)=> {
-                return (
-                    <div>
-                        <Item image={image1} id={index} title={post.title} precio={post.precio}/>
-                    </div>
-                )
-            })
-        }
-    </div>
-)
-}
-
-export default ItemList
+export default ItemList;

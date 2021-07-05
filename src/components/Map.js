@@ -15,12 +15,24 @@ function Map() {
 
     ];
     return (
+
         <div>
+
             {
-                post.map((post, index)) => { return( <p id={index}>{post.title}</p> ) }
-            }
+
+                post.map((post, index) => { 
+
+                    return (<p id={index}>{post.title}</p>) 
+
+            })
+
+        }
+
         </div>
+
     )
+
+
 
 }
 export default Map

@@ -1,45 +1,37 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom'
-import CartWidget from './CartWidget';
-import { Navbar,Nav,NavDropdown,Button,Form,FormControl } from 'react-bootstrap';
-export default function NavBar() {
-    return (
-  <Navbar bg="light" expand="lg">
-  <Navbar.Brand href="#">
-  <CartWidget/>
-  </Navbar.Brand>
-  <Navbar.Toggle aria-controls="navbarScroll" />
-  <Navbar.Collapse id="navbarScroll">
-    <Nav
-      className="mr-auto my-2 my-lg-0"
-      style={{ maxHeight: '100px' }}
-      navbarScroll>
-        
-      <NavLink href="#action1">Home</NavLink>
-      <NavLink href="#action2">Link</NavLink>
-      <NavDropdown title="Link" id="navbarScrollingDropdown">
-        <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action5">Something else here</NavDropdown.Item>
-      </NavDropdown>
-      <NavLink href="#" disabled>
-        Link
-      </NavLink>
-    </Nav>
-    <Form className="d-flex">
-      <FormControl
-        type="search"
-        placeholder="Search"
-        className="mr-2"
-        aria-label="Search"
-      />
-      <Button variant="outline-success">Search</Button>
-    </Form>
-  </Navbar.Collapse>
- 
-</Navbar>
-    )
-}
+import './NavBar.css';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
+import Logo from './Logo.js';
+import CartWidget from './CartWidget.js';
+import Envelop from '../assets/email.png';
+import { useOrder } from './CartContext';
 
+export default function NavBar() {
+  let Order = useOrder();
+
+  return (
+    <Navbar collapseOnSelect expand="lg" className="Nav-Style" variant="dark">
+      <Logo />
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link as={Link} to="/">
+            Inicio
+          </Nav.Link>
+          <Nav.Link as={Link} to="/types-products">
+            Perfumes
+          </Nav.Link>
+          <Nav.Link as={Link} to="/about">
+            Nuestra Empresa
+          </Nav.Link>
+          {Order.length > 0 ? <CartWidget /> : null}
+          <Nav.Link as={Link} to="/contact">
+            <img src={Envelop} alt="contactImages" className="EmailContact" />
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
+}
