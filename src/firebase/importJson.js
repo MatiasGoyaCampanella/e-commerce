@@ -65,7 +65,7 @@ const perfumes = [
     },
   ];
   
-  chocolates.forEach(function (obj) {
+  perfumes.forEach(function (obj) {
     db.collection('items')
       .add({
         id: obj.id,
