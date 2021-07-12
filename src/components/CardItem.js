@@ -33,7 +33,7 @@ function CardItem(props) {
         props.category,
       );
       alert.show(
-        `Se a agredado al carrito:${props.title} con ${counter} unidades!`,
+        `Se agrego al carrito:${props.title} con ${counter} unidades!`,
       );
     } else {
       const cantidad = order[index].quantity + counter;

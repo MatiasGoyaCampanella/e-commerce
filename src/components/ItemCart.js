@@ -24,11 +24,11 @@ function ItemCart(props) {
             counter={props.quantity}
             subItem={() => {
               itemCounterChange(props.quantity - 1, props.index);
-              alert.success('Se resto un item');
+              alert.success('Se quito un item');
             }}
             addItem={() => {
               itemCounterChange(props.quantity + 1, props.index);
-              alert.success('Se sumo un item');
+              alert.success('Se agrego un item');
             }}
           />
         </div>
