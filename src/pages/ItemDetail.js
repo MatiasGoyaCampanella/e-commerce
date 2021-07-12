@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import BoxItemDetail from '../components/BoxItemDetail';
-//import './ItemDetail.css';
 import { getFirestore } from '../firebase';
 
 function ItemDetail() {
@@ -22,9 +21,8 @@ function ItemDetail() {
         setData(temp[0]);
       }
     });
-    console.log(data);
-    console.log('Change Counter State');
-  }, []);
+
+  }, [params]);
 
   return (
     <>
