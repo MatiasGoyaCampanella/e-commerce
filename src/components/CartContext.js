@@ -48,6 +48,10 @@ export function CartContext({ children }) {
     console.log(tmp);
     setOrder(tmp);
   };
+  
+  const deleteOrder = () => {
+    setOrder([]);
+  };
 
   return (
     <OrderContext.Provider value={order}>

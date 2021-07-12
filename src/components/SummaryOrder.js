@@ -1,10 +1,24 @@
 import React from 'react';
 import './SummaryOrder.css';
 import ItemCart from './ItemCart.js';
-import { useOrder } from '../components/CartContext';
-function SummaryOrder() {
-  const Order = useOrder();
+import { useOrder, useOrderDelete } from '../components/CartContext';
+import { Link, Redirect } from 'react-router-dom';
+import { addItemFirebase } from '../firebase';
+import { useAlert } from 'react-alert';
 
+function SummaryOrder() {
+  const alert = useAlert();
+  const Order = useOrder();
+  const { deleteOrder } = useOrderDelete();
+  async function btnComprar() {
+    let idTest = await addItemFirebase(Order);
+    deleteOrder();
+    return alert.success(`Orden numero:${idTest}, Gracias por su compra!`);
+  }
+  const btnDelete = () => {
+    deleteOrder();
+    alert.success('Se ha vaciado el carrito');
+  };
   return (
     <div className="card">
       <div className="row">
@@ -38,7 +52,7 @@ function SummaryOrder() {
             })}
           </div>
           <div className="back-to-shop">
-            <a href="/">←</a>
+            <Link to="/types-candy">← Productos</Link>
             <span className="text-muted"></span>
           </div>
         </div>
@@ -61,15 +75,13 @@ function SummaryOrder() {
           <form>
             <p>Envio</p>{' '}
             <select>
-              <option className="text-muted">Standard-Delivery- €5.00</option>
+              <option className="text-muted">Delivery Cost - $500.00</option>
             </select>
-            <p>Cupon de Descuento</p>{' '}
-            <input id="code" placeholder="Enter your code" />
           </form>
           <div
             className="row"
             style={{
-              borderTop: '1px solid rgba(0,0,0,.1)',
+              borderTop: '1px solid rgba(1,0,0,.1)',
               padding: '2vh 0',
             }}
           >
@@ -78,9 +90,17 @@ function SummaryOrder() {
               ${Order.reduce((a, b) => a + b.price * b.quantity, 0)}
             </div>
           </div>{' '}
-          <button className="btn btn-dark">Comprar</button>
+          <div className="d-flex justify-content-around">
+            <button className="btn btn-danger" onClick={btnDelete}>
+              Vaciar Carrito
+            </button>
+            <button className="btn btn-dark" onClick={btnComprar}>
+              Comprar
+            </button>
+          </div>
         </div>
       </div>
+      {Order.length === 0 && <Redirect to="/types-candy" />}
     </div>
   );
 }
