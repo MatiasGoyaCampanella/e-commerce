@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SummaryOrder.css';
 import ItemCart from './ItemCart.js';
 import { useOrder, useOrderDelete } from '../components/CartContext';
@@ -7,17 +7,43 @@ import { addItemFirebase } from '../firebase';
 import { useAlert } from 'react-alert';
 
 function SummaryOrder() {
+  const [buyer, setBuyer] = useState({});
   const alert = useAlert();
   const Order = useOrder();
   const { deleteOrder } = useOrderDelete();
-  async function btnComprar() {
-    let idTest = await addItemFirebase(Order);
-    deleteOrder();
-    return alert.success(`Orden numero:${idTest}, Gracias por su compra!`);
-  }
+  const btnComprar = (event) => {
+    event.preventDefault();
+    alert.info('Su orden esta siendo procesada, \n Espere!');
+    event.target.disabled = true;
+    addItemFirebase(Order, buyer).then((id) => {
+      deleteOrder();
+      alert.success(`Orden numero: \n ${id},\n Gracias por su compra!`);
+    });
+  };
   const btnDelete = () => {
     deleteOrder();
     alert.success('Se ha vaciado el carrito');
+  };
+
+  const makeBuyer = (event, type) => {
+    console.log(event);
+    let temp = { ...buyer };
+    switch (type) {
+      case 'name':
+        temp.name = event.target.value;
+        break;
+      case 'email':
+        temp.email = event.target.value;
+        break;
+      case 'phone':
+        temp.phone = event.target.value;
+        break;
+      default:
+        console.log(temp);
+    }
+
+    console.log(temp);
+    setBuyer(temp);
   };
   return (
     <div className="card">
@@ -52,7 +78,7 @@ function SummaryOrder() {
             })}
           </div>
           <div className="back-to-shop">
-            <Link to="/types-candy">← Productos</Link>
+            <Link to="/types-products">← Productos</Link>
             <span className="text-muted"></span>
           </div>
         </div>
@@ -72,35 +98,61 @@ function SummaryOrder() {
               {Order.reduce((acu, element) => acu + element.quantity, 0)}
             </div>
           </div>
-          <form>
-            <p>Envio</p>{' '}
-            <select>
-              <option className="text-muted">Delivery Cost - $500.00</option>
-            </select>
-          </form>
-          <div
-            className="row"
-            style={{
-              borderTop: '1px solid rgba(1,0,0,.1)',
-              padding: '2vh 0',
-            }}
-          >
-            <div className="col">TOTAL</div>
-            <div className="col text-right">
-              ${Order.reduce((a, b) => a + b.price * b.quantity, 0)}
+          <form onSubmit={btnComprar}>
+            <p>Nombre y Apellido</p>{' '}
+            <input
+              onChange={(e) => {
+                makeBuyer(e, 'name', 'lastname');
+              }}
+              type="text"
+              className="text-muted"
+              required
+            />
+            <p>Email @</p>{' '}
+            <input
+              onChange={(e) => makeBuyer(e, 'email')}
+              type="email"
+              className="text-muted"
+              required
+            />
+            <p>Celular</p>{' '}
+            <input
+              onChange={(e) => makeBuyer(e, 'phone')}
+              type="text"
+              className="text-muted"
+              required
+            />
+            <form>
+              <p>Envio</p>{' '}
+                <select>
+                  <option className="text-muted">Delivery Cost - $500.00</option>
+                  <option className="text-muted">Low Cost - $300.00</option>
+                </select>
+            </form>
+            <div
+              className="row"
+              style={{
+                borderTop: '1px solid rgba(0,0,0,.1)',
+                padding: '2vh 0',
+              }}
+            >
+              <div className="col">TOTAL</div>
+              <div className="col text-right">
+                ${Order.reduce((a, b) => a + b.price * b.quantity, 0)}
+              </div>
+            </div>{' '}
+            <div className="d-flex justify-content-around">
+              <button className="btn btn-danger" onClick={btnDelete}>
+                Vaciar Carrito
+              </button>
+              <button className="btn btn-dark" type="submit">
+                Comprar
+              </button>
             </div>
-          </div>{' '}
-          <div className="d-flex justify-content-around">
-            <button className="btn btn-danger" onClick={btnDelete}>
-              Vaciar Carrito
-            </button>
-            <button className="btn btn-dark" onClick={btnComprar}>
-              Comprar
-            </button>
-          </div>
+          </form>
         </div>
       </div>
-      {Order.length === 0 && <Redirect to="/types-candy" />}
+      {Order.length === 0 && <Redirect to="/types-products" />}
     </div>
   );
 }
