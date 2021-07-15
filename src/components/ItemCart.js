@@ -43,7 +43,7 @@ function ItemCart(props) {
           <div className="row"></div>
         </div>
 
-        <div className="col12">
+        <div className="col-12">
           <button
             onClick={() => {
               deleteItem(props.index);

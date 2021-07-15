@@ -1,0 +1,5 @@
+.card-deck {
+    display: flex;
+    width: 30rem;
+    flex-wrap: wrap;
+  }

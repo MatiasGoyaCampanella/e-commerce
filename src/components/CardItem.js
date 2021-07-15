@@ -47,7 +47,7 @@ function CardItem(props) {
   return (
     <Card
       className="shadow-lg p-3 mb-5 bg-body rounded-4"
-      style={{ width: '18rem', margin: ' 10px auto' }}
+      style={{ width: '12rem', margin: ' 10px auto' }}
     >
       <Card.Img variant="top" src={props.photo} />
       <Card.Body>

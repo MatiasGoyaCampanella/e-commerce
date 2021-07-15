@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-//import './ItemList.css';
+import './ItemList.css';
 import { CardDeck, Spinner } from 'react-bootstrap';
 import CardItem from './CardItem.js';
 import { getFirestore } from '../firebase';
