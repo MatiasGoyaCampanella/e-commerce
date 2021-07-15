@@ -14,7 +14,7 @@
 
 @media (max-width: 767px) {
 .card {
-      margin: 3vh auto;
+margin: 3vh auto;
 }
 }
 .cart {
@@ -26,7 +26,7 @@
 }
 
 @media (max-width: 767px) {
-    .cart {
+.cart {
       padding: 4vh;
       border-bottom-left-radius: unset;
       border-top-right-radius: 1rem;
@@ -42,7 +42,7 @@
 }
 
 @media (max-width: 767px) {
-    .summary {
+.summary {
       border-top-right-radius: unset;
       border-bottom-left-radius: 1rem;
     }
@@ -67,22 +67,22 @@ margin: 0;
     margin: 0;
     padding: 2vh 0;
     width: 100%;
-  }
-  
-  .col-2,
-  .col {
+}
+
+.col-2,
+.col {
+padding: 0 1vh;
+}
+
+a {
     padding: 0 1vh;
-  }
-  
-  a {
-    padding: 0 1vh;
-  }
-  
-  .close {
+}
+
+.close {
     margin-left: auto;
     font-size: 0.7rem;
-  }
-  
+}
+
 .back-to-shop {
 margin-top: 4.5rem;
 }
@@ -96,34 +96,22 @@ form {
     padding: 2vh 0;
 }
 select {
-    border: 1px solid rgba(0, 0, 0, 0.137);
+    border: 1px solid #bfe006e8;
     padding: 1.5vh 1vh;
     margin-bottom: 4vh;
     outline: none;
     width: 100%;
     background-color: rgb(247, 247, 247);
 }
-  
+
 input {
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1vh;
     margin-bottom: 4vh;
     outline: none;
-    wdth: 100%;
+    width: 100%;
     background-color: rgb(247, 247, 247);
 }
 input:focus::-webkit-input-placeholder {
     color: transparent;
-}
-
-. #code {
-background-image: linear-gradient(
-        to left,
-        rgba(255, 255, 255, 0.253),
-        rgba(255, 255, 255, 0.185)
-),
-url('https://img.icons8.com/small/16/000000/long-arrow-right.png');
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: center;
 }

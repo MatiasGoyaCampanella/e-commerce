@@ -18,14 +18,14 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=perfumes')
   .then((data) => data.json())
   .then((data) => {
     const temp = data.results;
-    //console.log(temp);
+  
     temp.forEach(function (obj) {
       db.collection('items')
         .add({
           id: obj.id,
           name: obj.title,
           price: obj.price,
-          category: 'Perfumes',
+          category: 'perfumes',
           stock: obj.available_quantity,
           photo_url: obj.thumbnail,
           thumb: obj.thumbnail,
