@@ -14,6 +14,7 @@ import { CartContext } from './components/CartContext';
 import { positions, Provider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 
+
 function App() {
   const options = {
     timeout: 2000,

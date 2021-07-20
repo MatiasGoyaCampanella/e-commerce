@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import '@firebase/firestore';
 
+
 const app = firebase.initializeApp({
     apiKey: "AIzaSyCS2LL6ddNflUGY14cYpmU3ua33OXDIBYg",
     authDomain: "coderhouse-ecommerce-7e12e.firebaseapp.com",
@@ -19,8 +20,8 @@ export function getFirestore() {
 }
 export async function addItemFirebase(order) {
   const db = getFirestore();
-  const pushOrder = db.collection('orders');
-  pushOrder
+  const newOrder = db.collection('order');
+  newOrder
     .add({ items: order })
     .then(({ id }) => {
       return id;

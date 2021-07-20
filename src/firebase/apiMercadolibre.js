@@ -14,7 +14,7 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-fetch('https://api.mercadolibre.com/sites/MLA/search?q=perfumes')
+fetch('https://api.mercadolibre.com/sites/MLA/search?q=Perfumes')
   .then((data) => data.json())
   .then((data) => {
     const temp = data.results;
@@ -25,7 +25,7 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=perfumes')
           id: obj.id,
           name: obj.title,
           price: obj.price,
-          category: 'perfumes',
+          category: 'Perfumes',
           stock: obj.available_quantity,
           photo_url: obj.thumbnail,
           thumb: obj.thumbnail,
